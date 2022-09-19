@@ -40,6 +40,7 @@
             android:ems="10"
             android:layout_weight="2"
             android:id="@+id/username"
+            android:textColor="@color/black"
             android:background="#ffff"/>
     </LinearLayout>
     <LinearLayout
@@ -59,6 +60,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_weight="2"
+            android:textColor="@color/black"
             android:id="@+id/password"
             android:background="#ffff"/>
     </LinearLayout>
