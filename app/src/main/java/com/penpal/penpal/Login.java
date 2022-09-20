@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,8 @@ public class Login extends AppCompatActivity {
         EditText pWord=(EditText)findViewById(R.id.password);
 
         Button loginbtn= (Button)findViewById(R.id.login);
+
+
 
         //admin and admin
 
@@ -49,4 +53,11 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+    public void goToSignup(View v){
+
+    }
+
+
+
 }
