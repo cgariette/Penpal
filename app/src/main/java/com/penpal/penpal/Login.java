@@ -26,30 +26,42 @@ public class Login extends AppCompatActivity {
         EditText uName=(EditText)findViewById(R.id.username);
         EditText pWord=(EditText)findViewById(R.id.password);
 
-        Button loginbtn= (Button)findViewById(R.id.login);
+        Button loginBtn= (Button)findViewById(R.id.login);
+        TextView dontHaveAccount=(TextView)findViewById(R.id.donthaveanaccount);
+        DBHelper DB;
+        DB= new DBHelper(this);
 
 
 
         //admin and admin
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String username="admin", password="admin";
-                if(uName.getText().toString().equals(username)
-                        && pWord.getText().toString().equals(password))
-                {
-                    Toast.makeText(Login.this,"LOGIN SUCCESSFUL!!!",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(Login.this,Home.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    //incorrect
-                    Toast.makeText(Login.this,"LOGIN FAILED!!!",Toast.LENGTH_SHORT).show();
+                String user= uName.getText().toString();
+                String pass= pWord.getText().toString();
+                if (user.equals("") || pass.equals(""))
+                    Toast.makeText(Login.this,"Please enter all fields",Toast.LENGTH_SHORT).show();
+                else{
+                    Boolean checkUserPass = DB.checkUsernamePassword(user, pass);
+                    if(checkUserPass==true) {
+                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), Home.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(Login.this,"Invalid credentials",Toast.LENGTH_SHORT).show();
+                    }
                 }
 
+            }
+        });
+        dontHaveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(), Register.class);
+                startActivity(intent);
             }
         });
     }
