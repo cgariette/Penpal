@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/nav_home" android:title="Home"
+            android:icon="@drawable/ic_home"/>
+        <item android:id="@+id/nav_search" android:title="Search"
+            android:icon="@drawable/ic_search"/>
+        <item android:id="@+id/nav_favorite" android:title="Favorite"
+            android:icon="@drawable/ic_favorite"/>
+        <item android:id="@+id/nav_progress" android:title="Progress"
+            android:icon="@drawable/ic_fire"/>
+        <item android:id="@+id/nav_setting" android:title="Settings"
+            android:icon="@drawable/ic_baseline_settings_24"/>
+
+
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Communicate">
+            <menu>
+                <group>
+                    <item android:title="Add Entry" android:icon="@drawable/ic_add"
+                        android:id="@+id/addEntry"/>
+                </group>
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Authentication">
+            <menu>
+                <group>
+                    <item android:title="Logout" android:icon="@drawable/ic_logout"
+                        android:id="@+id/logout"/>
+                </group>
+            </menu>
+        </item>
+    </group>
+
+
+</menu>
