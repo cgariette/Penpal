@@ -6,9 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
@@ -83,9 +88,14 @@ public class Home extends AppCompatActivity {
                         break;
 
                     case R.id.logout:
-                        Log.i("MENU_DRAWER_TAG","Logout item is clicked");
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                        navigationView.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(menuItem -> {
+                            finish();
+                            return true;
+                        });
+
                         break;
+
+
                 }
 
                 return true;
@@ -95,4 +105,7 @@ public class Home extends AppCompatActivity {
 
 
     }
+
+
+
 }

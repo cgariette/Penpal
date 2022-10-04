@@ -1,5 +1,6 @@
 package com.penpal.penpal;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
 
@@ -76,5 +82,26 @@ public class Register extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void handleRegister(){
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+              if (task.isSuccessful()){
+                  Toast.makeText(Register.this,"Signed up successfully!",Toast.LENGTH_SHORT).show();
+              }
+              else{
+                  Toast.makeText(Register.this,task.getException().getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+              }
+            }
+        });
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }
